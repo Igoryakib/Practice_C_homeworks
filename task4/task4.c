@@ -13,14 +13,14 @@ void main(void) {
 
 uint32_t setBit(const uint32_t _arg, const uint8_t _bit) {
 
-	uint32_t mask = 0x1 << _bit;
-	uint32_t result = _arg | mask;
+	uint32_t const mask = 0x1 << _bit;
+	uint32_t const result = _arg | mask;
 	return result;
 }
 
 uint32_t resetBit(const uint32_t _arg, const uint8_t _bit) {
 
-	uint32_t mask = 0x1 << _bit;
-	uint32_t result = _arg & ~mask;
+	uint32_t const mask = 0x1 << _bit;
+	uint32_t const result = _arg & ~mask;
 	return result;
 }
