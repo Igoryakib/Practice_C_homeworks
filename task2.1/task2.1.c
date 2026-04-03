@@ -2,20 +2,31 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+bool static funcA(void);
+bool static funcB(void);
+
 void main(void) {
 
-	bool a = true;
-	uint8_t const b = 1;
 	bool result = true;
 	
-	result = a && b;
-	printf("%d\n", result); // 1
+	result = funcA() || funcB();
+	printf("%d\n", result); // func A executed, func B - not, result - 1
 
-	a = false;
-	result = a || b;
-	printf("%d\n", result); // 1
+	result = funcA() && funcB();
+	printf("%d\n", result); // func A & b were executed, result - 0
 
-	result = a && b;
-	printf("%d\n", result); // 0
+	result = funcB() && funcA();
+	printf("%d\n", result); // func B was executed, func A - not, result - 0
+}
 
+bool static funcA(void) {
+
+	printf("Func A was executed \n");
+	return true;
+}
+
+bool static funcB(void) {
+
+	printf("Func B was executed \n");
+	return false;
 }
