@@ -19,8 +19,8 @@ void main(void)
     // Got character array without '\0' and garbage in buf. So 'for' loop stop executed on '/0', which i put above in last position in array, instead of place where the copied string ends. 
 
     // The demo showing strncat fuction in case of insufficent destination buf size. Got error: Stack around the variable 'string3' was corrupted.
-    char const string3[MAXLINE - 10] = {0};
-    printf("%s \n", strncat(string3, string1, 12));
+    char string3[MAXLINE] = {0};
+    printf("%s \n", strncat(string3, string1, 20));
 
     for (int i = 0; string3[i] != '\0'; i++) {
         printf("%d \n", i);
