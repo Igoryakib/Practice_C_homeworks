@@ -2,15 +2,15 @@
 #include <stdint.h>
 
 extern int counter;
-extern void funcC(void);
+void funcC(void);
 
 // global variables
 const int num1 = 10;
 const int num2 = 20;
 
-static void funcA();
+static void funcA(void);
 
-static int funcB();
+static int funcB(void);
 
 void main(void) {
 	// we have access in main to num1, num2
@@ -18,8 +18,8 @@ void main(void) {
 	printf("Main scope - num2: %d \n", num2);
 	funcA();
 	// example of static local
-	printf("funcB %d \n", fun());
-	printf("funcB %d \n", fun());
+	printf("funcB %d \n", funcB());
+	printf("funcB %d \n", funcB());
 	// example of extern
 	printf("extern counter: %d", counter);
 	// When we are trying execute funcC - got error because funcC is static global
@@ -34,7 +34,7 @@ static void funcA() {
 	printf("funcA scope - num2: %d \n", num2);
 }
 
-static int fun() {
+static int funcB(void) {
 	static int count = 0;
 	count++;
 	if (count == 2) {
